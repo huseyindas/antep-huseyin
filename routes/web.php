@@ -18,4 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hakkimda', [HomeController::class,'showView']);
+Route::get('hakkimda', [HomeController::class, 'showUsersView']);
+Route::get('urunler', [HomeController::class,'showProductsView']);
+Route::get('user-products', [HomeController::class,'showUserProductsView']);
+

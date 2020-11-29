@@ -13,14 +13,14 @@ class Products extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('products', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('pName');
+            $table->decimal('price' ,5,2);
+            $table->string('photo', 100)->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
+
         });
     }
 
@@ -31,6 +31,6 @@ class Products extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }

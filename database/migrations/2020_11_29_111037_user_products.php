@@ -13,7 +13,15 @@ class UserProducts extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('user_products', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('user_id')->unsigned();
+                $table->integer('product_id')->unsigned();
+                $table->timestamps();
+
+                $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+                $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete()->cascadeOnUpdate();
+            });
     }
 
     /**
@@ -23,6 +31,6 @@ class UserProducts extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('products');
     }
 }
